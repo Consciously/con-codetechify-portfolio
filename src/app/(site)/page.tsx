@@ -2,6 +2,7 @@ import Image from 'next/image';
 import SkillCard from './components/SkillCard';
 import ProjectCard from './components/ProjectCard';
 import BlogCard from './components/BlogCard';
+import profileImg from '@/public/images/me.jpg';
 
 export default function Home() {
 	// Dummy Data
@@ -31,9 +32,43 @@ export default function Home() {
 
 	return (
 		<>
+			<section className='bg-slate-900 text-white py-20 h-screen'>
+				<div className='container mx-auto px-4 flex flex-col md:flex-row items-center justify-center h-full gap-8'>
+					<div className='md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
+						<div className='w-64 h-64 rounded-full overflow-hidden'>
+							<Image
+								src={profileImg}
+								alt='Stefan Ihle'
+								width={500}
+								height={500}
+								className='mb-8 object-cover'
+							/>
+						</div>
+						<blockquote className='italic text-center'>
+							<span className='block mb-2'>
+								&ldquo;Talk is cheap. Show me the code.&rdquo;
+							</span>
+							<cite>— Linus Torvalds</cite>
+						</blockquote>
+					</div>
+					<div className='md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg mt-8 md:mt-0 text-center md:text-left flex flex-col justify-center'>
+						<h1 className='text-4xl mb-4 text-yellow-500'>
+							Welcome to My Portfolio
+						</h1>
+						<p className='mb-4 text-lg leading-relaxed'>
+							<span className='font-semibold'>Hello!</span> I'm Stefan Ihle, a
+							full-stack web developer specializing in JavaScript, React, and
+							Next.js. I build and maintain responsive, scalable, and performant
+							web applications. I love to solve complex problems and create
+							clean, efficient code.
+						</p>
+						<button className='bg-yellow-500 text-gray-800 rounded px-6 py-2 mt-4 hover:bg-yellow-600 transition-colors self-center md:self-start'>
+							Let&apos;s Connect
+						</button>
+					</div>
+				</div>
+			</section>
 			<section className='container mx-auto px-4 py-8'>
-				<h1 className='text-4xl text-center my-8'>Welcome to My Portfolio</h1>
-				<p className='text-center mb-8'>Your introduction goes here...</p>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 					{skills.map(skill => (
 						<SkillCard key={skill.id} skill={skill} />
