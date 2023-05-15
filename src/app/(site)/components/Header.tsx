@@ -4,9 +4,9 @@ import Link from 'next/link';
 const Header = () => {
 	return (
 		<header className='py-4 bg-slate-950 text-white'>
-			<div className='container mx-auto flex justify-between items-center'>
-				<Link href='/' className='text-2xl font-bold text-white'>
-					Stefan Ihle
+			<div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
+				<Link href='/' className='text-2xl font-bold text-white uppercase'>
+					codetechify.com
 				</Link>
 				<nav>
 					<ul className='flex space-x-4'>

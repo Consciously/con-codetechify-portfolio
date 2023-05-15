@@ -32,39 +32,37 @@ export default function Home() {
 
 	return (
 		<>
-			<section className='bg-slate-900 text-white py-20 h-screen'>
-				<div className='container mx-auto px-4 flex flex-col md:flex-row items-center justify-center h-full gap-8'>
-					<div className='md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
-						<div className='w-64 h-64 rounded-full overflow-hidden'>
-							<Image
-								src={profileImg}
-								alt='Stefan Ihle'
-								width={500}
-								height={500}
-								className='mb-8 object-cover'
-							/>
-						</div>
-						<blockquote className='italic text-center'>
-							<span className='block mb-2'>
-								&ldquo;Talk is cheap. Show me the code.&rdquo;
-							</span>
-							<cite>— Linus Torvalds</cite>
-						</blockquote>
-					</div>
-					<div className='md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg mt-8 md:mt-0 text-center md:text-left flex flex-col justify-center'>
-						<h1 className='text-4xl mb-4 text-yellow-500'>
-							Welcome to My Portfolio
+			<section className='bg-slate-900 text-white py-20 md:h-screen'>
+				<div className='container mx-auto px-4 h-full'>
+					<div className='flex flex-col h-full justify-center'>
+						<h1 className='text-3xl md:text-5xl font-medium mb-8 uppercase text-center'>
+							Welcome to Codetechify
 						</h1>
-						<p className='mb-4 text-lg leading-relaxed'>
-							<span className='font-semibold'>Hello!</span> I'm Stefan Ihle, a
-							full-stack web developer specializing in JavaScript, React, and
-							Next.js. I build and maintain responsive, scalable, and performant
-							web applications. I love to solve complex problems and create
-							clean, efficient code.
-						</p>
-						<button className='bg-yellow-500 text-gray-800 rounded px-6 py-2 mt-4 hover:bg-yellow-600 transition-colors self-center md:self-start'>
-							Let&apos;s Connect
-						</button>
+						<div className='flex flex-col md:flex-row h-full gap-x-8 justify-center items-center'>
+							<div className='w-full md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
+								<div className='w-64 h-64 rounded-full overflow-hidden relative object-'>
+									<Image src={profileImg} alt='Stefan Ihle' fill />
+								</div>
+								<blockquote className='italic text-center'>
+									<span className='block mb-2'>
+										&ldquo;Talk is cheap. Show me the code.&rdquo;
+									</span>
+									<cite>— Linus Torvalds</cite>
+								</blockquote>
+							</div>
+							<div className='w-full md:w-1/2 border-4 border-slate-700 p-6 rounded-lg shadow-lg mt-8 md:mt-0 text-center md:text-left flex flex-col justify-center'>
+								<p className='mb-4 text-lg leading-relaxed'>
+									<span className='font-semibold'>Hello!</span> I&apos;m Stefan
+									Ihle, a full-stack web developer specializing in JavaScript,
+									React, and Next.js. I build and maintain responsive, scalable,
+									and performant web applications. I love to solve complex
+									problems and create clean, efficient code.
+								</p>
+								<button className='bg-yellow-500 text-gray-800 rounded px-6 py-2 mt-4 hover:bg-yellow-600 transition-colors self-center'>
+									Let&apos;s Connect
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
