@@ -1,9 +1,16 @@
 import '../globals.css';
-import { Inter } from 'next/font/google';
+import { Montserrat, Space_Mono } from 'next/font/google';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+export const montserrat = Montserrat({
+	subsets: ['latin'],
+	weight: ['400', '700'],
+});
+export const spaceMono = Space_Mono({
+	subsets: ['latin'],
+	weight: ['400', '700'],
+});
 
 export const metadata = {
 	title: 'Create Next App',
@@ -17,7 +24,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className='text-white bg-slate-700'>
+			<body className={`text-white bg-slate-700 ${montserrat.className}`}>
 				<Header />
 				<main>{children}</main>
 				<Footer />
