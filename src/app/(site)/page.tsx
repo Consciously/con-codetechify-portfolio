@@ -4,8 +4,11 @@ import ProjectCard from './components/ProjectCard';
 import BlogCard from './components/BlogCard';
 import profileImg from '@/public/images/me.jpg';
 import { spaceMono } from './layout';
+import { getProjects } from '@/sanity/sanityUtils';
 
-export default function Home() {
+export default async function Home() {
+	const projects = await getProjects();
+
 	// Dummy Data
 	const skills = [
 		{ id: '1', title: 'JavaScript', description: 'Expert in JavaScript' },
@@ -13,14 +16,6 @@ export default function Home() {
 		{ id: '3', title: 'Next.js', description: 'Expert in Next.js' },
 		{ id: '4', title: 'REST Api', description: 'Expert in REST Api' },
 		// Add more skills as needed
-	];
-
-	const projects = [
-		{ id: '1', title: 'Project 1', description: 'This is project 1' },
-		{ id: '2', title: 'Project 2', description: 'This is project 2' },
-		{ id: '3', title: 'Project 3', description: 'This is project 3' },
-		{ id: '4', title: 'Project 4', description: 'This is project 4' },
-		// Add more projects as needed
 	];
 
 	const blogPosts = [
@@ -44,7 +39,12 @@ export default function Home() {
 						<div className='flex flex-col md:flex-row h-full gap-x-8 justify-center items-center'>
 							<div className='w-full md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
 								<div className='w-64 h-64 rounded-full overflow-hidden relative object-'>
-									<Image src={profileImg} alt='Stefan Ihle' fill />
+									<Image
+										src={profileImg}
+										alt='Stefan Ihle'
+										fill
+										sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+									/>
 								</div>
 								<blockquote className='italic text-center'>
 									<span className='block mb-2'>
@@ -88,7 +88,7 @@ export default function Home() {
 				</h2>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 					{projects.map(project => (
-						<ProjectCard key={project.id} project={project} />
+						<ProjectCard key={project._id} project={project} />
 					))}
 				</div>
 			</section>
