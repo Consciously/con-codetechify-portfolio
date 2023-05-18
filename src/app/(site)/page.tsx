@@ -31,7 +31,7 @@ export default async function Home() {
 						</h1>
 						<div className='flex flex-col md:flex-row h-full gap-x-8 justify-center items-center'>
 							<div className='w-full md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
-								<div className='w-64 h-64 rounded-full overflow-hidden relative object-'>
+								<div className='w-64 h-64 rounded-full overflow-hidden relative object-cover'>
 									<Image
 										src={profileImg}
 										alt='Stefan Ihle'
