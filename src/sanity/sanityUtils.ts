@@ -1,4 +1,4 @@
-import { IProject } from '@/types/Project';
+import { IProject, ISkill } from '@/types';
 import { createClient, groq } from 'next-sanity';
 import clientConfig from './config/clientConfig';
 
@@ -13,6 +13,16 @@ export const getProjects = async (): Promise<IProject[]> => {
       "image": image.asset->url,
       githubRepository,
       liveDemo
+    }`,
+	);
+};
+
+export const getSkills = async (): Promise<ISkill[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "skill"]{
+      _id,
+      _createdAt,
+      skill
     }`,
 	);
 };

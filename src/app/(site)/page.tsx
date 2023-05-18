@@ -4,19 +4,12 @@ import ProjectCard from './components/ProjectCard';
 import BlogCard from './components/BlogCard';
 import profileImg from '@/public/images/me.jpg';
 import { spaceMono } from './layout';
-import { getProjects } from '@/sanity/sanityUtils';
+import { getProjects, getSkills } from '@/sanity/sanityUtils';
 
 export default async function Home() {
 	const projects = await getProjects();
 
-	// Dummy Data
-	const skills = [
-		{ id: '1', title: 'JavaScript', description: 'Expert in JavaScript' },
-		{ id: '2', title: 'React', description: 'Expert in React' },
-		{ id: '3', title: 'Next.js', description: 'Expert in Next.js' },
-		{ id: '4', title: 'REST Api', description: 'Expert in REST Api' },
-		// Add more skills as needed
-	];
+	const skills = await getSkills();
 
 	const blogPosts = [
 		{ id: '1', title: 'Blog Post 1', description: 'This is blog post 1' },
@@ -75,10 +68,10 @@ export default async function Home() {
 					</div>
 				</div>
 			</section>
-			<section className='container mx-auto px-4 py-8'>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+			<section className='container mx-auto flex justify-center items-center px-4 py-8'>
+				<div className='flex flex-col md:flex-row justify-center md:justify-between items-center md:flex-wrap w-full md:w-2/3 gap-y-4 md:gap-8 xl:gap-16'>
 					{skills.map(skill => (
-						<SkillCard key={skill.id} skill={skill} />
+						<SkillCard key={skill._id} skill={skill} />
 					))}
 				</div>
 			</section>

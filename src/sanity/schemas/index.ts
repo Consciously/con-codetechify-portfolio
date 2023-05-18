@@ -1,5 +1,6 @@
 import project from './projectSchema';
+import skill from './skillsSchema';
 
-const schemas: any = [project]; // Delete any type
+const schemas = [project, skill];
 
 export default schemas;
