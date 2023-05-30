@@ -11,7 +11,7 @@ const ProjectCard = ({ project }: IProjectProp) => {
 	return (
 		<Link href={`/projects/${project.slug}`}>
 			<div className='p-4 bg-transparent text-rose-500 hover:bg-rose-500 border-2 border-slate-900 hover:border-transparent hover:text-slate-950 rounded-lg shadow-md shadow-slate-800 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start h-full transition'>
-				<figure className='flex-auto basis-1/4 mb-4 md:mr-8 object-cover h-full flex items-center'>
+				<figure className='flex-auto basis-1/2 mb-4 md:mr-8 object-cover h-full flex items-center'>
 					<Image
 						src={project.image}
 						width={150}

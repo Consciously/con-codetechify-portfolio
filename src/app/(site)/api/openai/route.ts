@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import { Configuration, OpenAIApi } from 'openai';
+import { openAIApiKey } from '@/environment';
 
 export async function GET() {
 	const configuration = new Configuration({
 		organization: 'org-IIdcRKDTvgM2EvRtsoYugwa6',
-		apiKey: process.env.OPENAI_API_KEY,
+		apiKey: openAIApiKey,
 	});
 
 	const openai = new OpenAIApi(configuration);
