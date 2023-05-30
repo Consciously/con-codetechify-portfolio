@@ -21,11 +21,11 @@ export default async function Home() {
 
 	return (
 		<>
-			<section className='bg-slate-900 text-white py-20 md:h-screen'>
+			<section className='bg-slate-900 py-20 md:h-screen'>
 				<div className='container mx-auto px-4 h-full'>
 					<div className='flex flex-col h-full justify-center'>
 						<h1
-							className={`text-3xl md:text-5xl font-medium mb-8 uppercase text-center ${spaceMono.className}`}
+							className={`bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center ${spaceMono.className}`}
 						>
 							Welcome to Codetechify
 						</h1>

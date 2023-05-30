@@ -5,22 +5,30 @@ const Header = () => {
 	return (
 		<header className='py-4 bg-slate-950 text-white'>
 			<div className='container mx-auto flex flex-col md:flex-row justify-between items-center'>
-				<Link href='/' className='text-2xl font-bold text-white uppercase'>
+				<Link href='/' className='text-lg font-bold text-white uppercase'>
 					codetechify.com
 				</Link>
 				<nav>
 					<ul className='flex space-x-4'>
 						<li>
-							<Link href='/about'>About</Link>
+							<Link href='/about' className='uppercase font-semibold'>
+								About
+							</Link>
 						</li>
 						<li>
-							<Link href='/projects'>Projects</Link>
+							<Link href='/projects' className='uppercase font-semibold'>
+								Projects
+							</Link>
 						</li>
 						<li>
-							<Link href='/blog'>Blog</Link>
+							<Link href='/blog' className='uppercase font-semibold'>
+								Blog
+							</Link>
 						</li>
 						<li>
-							<Link href='/contact'>Contact</Link>
+							<Link href='/contact' className='uppercase font-semibold'>
+								Contact
+							</Link>
 						</li>
 					</ul>
 				</nav>

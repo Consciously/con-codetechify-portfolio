@@ -10,8 +10,8 @@ interface IProjectProp {
 const ProjectCard = ({ project }: IProjectProp) => {
 	return (
 		<Link href={`/projects/${project.slug}`}>
-			<div className='p-4 bg-rose-500 hover:bg-rose-600 rounded-lg shadow-md shadow-slate-800 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start h-full transition'>
-				<figure className='flex-auto basis-1/4 mb-4 md:mr-4 object-cover h-full flex items-center'>
+			<div className='p-4 bg-transparent text-rose-500 hover:bg-rose-500 border-2 border-slate-900 hover:border-transparent hover:text-slate-950 rounded-lg shadow-md shadow-slate-800 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start h-full transition'>
+				<figure className='flex-auto basis-1/4 mb-4 md:mr-8 object-cover h-full flex items-center'>
 					<Image
 						src={project.image}
 						width={150}
@@ -20,10 +20,11 @@ const ProjectCard = ({ project }: IProjectProp) => {
 					/>
 				</figure>
 				<div className='flex-auto basis-3/4'>
-					<h3 className='text-lg font-semibold text-white text-center md:text-left'>
+					<h3 className='text-2xl font-semibold text-center md:text-left mb-8'>
 						{project.title}
 					</h3>
-					<p className='mt-2 text-white text-center md:text-left'>
+					{/* <div className='border-b-2 border-slate-800'></div> */}
+					<p className='mt-8 text-lg text-white text-center md:text-left'>
 						{project.description}
 					</p>
 				</div>
