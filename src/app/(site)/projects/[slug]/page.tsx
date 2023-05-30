@@ -31,7 +31,7 @@ const ProjectPage = async ({ params }: IProps) => {
 				<div>
 					<h1 className='text-4xl'>{project.title}</h1>
 					<p className='mt-2'>
-						Created at: {format(new Date(project._createdAt), 'dd.MM.yyyy')}
+						Created at: {format(new Date(project._createdAt), 'dd.MM. yyyy')}
 					</p>
 				</div>
 				<div className='col-span-2'>
