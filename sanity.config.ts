@@ -14,7 +14,7 @@ const config = defineConfig({
 	plugins: [
 		deskTool(),
 		openaiImageAsset({
-			API_KEY: openAIApiKey,
+			API_KEY: openAIApiKey!,
 		}),
 	],
 	schema: { types: schemas },
