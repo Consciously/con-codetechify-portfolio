@@ -36,3 +36,8 @@ next-env.d.ts
 
 # public/env.json
 public/env.json
+
+#env
+.env
+.env.development
+.env.production

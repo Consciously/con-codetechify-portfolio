@@ -5,7 +5,7 @@ import { openAIApiKey } from '@/environment';
 export async function GET() {
 	const configuration = new Configuration({
 		organization: 'org-IIdcRKDTvgM2EvRtsoYugwa6',
-		apiKey: openAIApiKey,
+		apiKey: process.env.OPENAI_API_KEY,
 	});
 
 	const openai = new OpenAIApi(configuration);
