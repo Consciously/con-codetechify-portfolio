@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { Configuration, OpenAIApi } from 'openai';
-import { openAIApiKey } from '@/environment';
 
 export async function GET() {
 	const configuration = new Configuration({
