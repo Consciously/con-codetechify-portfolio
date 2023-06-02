@@ -1,13 +1,13 @@
 import '../globals.css';
-import { Montserrat, Space_Mono } from 'next/font/google';
+import { Roboto_Mono, Fira_Mono } from 'next/font/google';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-export const montserrat = Montserrat({
+export const robotoMono = Roboto_Mono({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 });
-export const spaceMono = Space_Mono({
+export const firaMono = Fira_Mono({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 });
@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={`text-white bg-slate-700 ${montserrat.className}`}>
+			<body className={`text-white bg-slate-700 ${robotoMono.className}`}>
 				<Header />
 				<main>{children}</main>
 				<Footer />

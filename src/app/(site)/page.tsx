@@ -3,7 +3,6 @@ import SkillCard from './components/SkillCard';
 import ProjectCard from './components/ProjectCard';
 import BlogCard from './components/BlogCard';
 import profileImg from '@/public/images/me.jpg';
-import { spaceMono } from './layout';
 import { getProjects, getSkills } from '@/sanity/sanityUtils';
 
 export default async function Home() {
@@ -24,9 +23,7 @@ export default async function Home() {
 			<section className='bg-slate-900 py-20 md:h-screen'>
 				<div className='container mx-auto px-4 h-full'>
 					<div className='flex flex-col h-full justify-center'>
-						<h1
-							className={`bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center ${spaceMono.className}`}
-						>
+						<h1 className='bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center'>
 							Welcome to Codetechify
 						</h1>
 						<div className='flex flex-col md:flex-row h-full gap-x-8 justify-center items-center'>
@@ -76,19 +73,15 @@ export default async function Home() {
 				</div>
 			</section>
 			<section className='container mx-auto px-4 py-8'>
-				<h2 className={`text-3xl text-center my-8 ${spaceMono.className}`}>
-					Featured Projects
-				</h2>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+				<h2 className='text-3xl text-center my-8'>Featured Projects</h2>
+				<div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
 					{projects.map(project => (
 						<ProjectCard key={project._id} project={project} />
 					))}
 				</div>
 			</section>
 			<section className='container mx-auto px-4 py-8'>
-				<h2 className={`text-3xl text-center my-8 ${spaceMono.className}`}>
-					Recent Blog Posts
-				</h2>
+				<h2 className='text-3xl text-center my-8'>Recent Blog Posts</h2>
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
 					{blogPosts.map(post => (
 						<BlogCard key={post.id} post={post} />

@@ -9,25 +9,20 @@ interface IProjectProp {
 
 const ProjectCard = ({ project }: IProjectProp) => {
 	return (
-		<Link href={`/projects/${project.slug}`}>
-			<div className='p-4 bg-transparent text-rose-500 hover:bg-rose-500 border-2 border-slate-900 hover:border-transparent hover:text-slate-950 rounded-lg shadow-md shadow-slate-800 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start h-full transition'>
-				<figure className='flex-auto basis-1/2 mb-4 md:mr-8 object-cover h-full flex items-center'>
-					<Image
-						src={project.image}
-						width={150}
-						height={150}
-						alt={project.title}
-					/>
-				</figure>
-				<div className='flex-auto basis-3/4'>
-					<h3 className='text-2xl font-semibold text-center md:text-left mb-8'>
-						{project.title}
-					</h3>
-					{/* <div className='border-b-2 border-slate-800'></div> */}
-					<p className='mt-8 text-lg text-white text-center md:text-left'>
-						{project.description}
-					</p>
-				</div>
+		<Link
+			href={`/projects/${project.slug}`}
+			className='flex flex-col md:flex-row md:max-w-2xl rounded-lg shadow-lg shadow-slate-900 bg-slate-500'
+		>
+			<Image
+				src={project.image}
+				alt={project.title}
+				width={200}
+				height={200}
+				className='object-cover w-full md:w-48 h-auto rounded-t-lg md:rounded-none md:rounded-l-lg drop-shadow-lg'
+			/>
+			<div className='flex flex-col justify-center w-full h-full gap-y-8 p-2 sm:p-4 lg:p-8  leading-normal border-2 border-t-0 md:border-t-2 md:border-l-0 border-slate-500 text-slate-950 hover:border-transparent hover:bg-rose-500 hover:text-white rounded-lg rounded-t-none md:rounded-t-lg md:rounded-l-none transition duration-300'>
+				<h3 className='text-lg lg:text-2xl font-bold '>{project.title}</h3>
+				<p className='text-base'>{project.description}</p>
 			</div>
 		</Link>
 	);

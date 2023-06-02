@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { openaiImageAsset } from 'sanity-plugin-asset-source-openai';
 import schemas from '@/sanity/schemas';
+import { codeInput } from '@sanity/code-input';
 
 const config = defineConfig({
 	projectId: process.env.NEXT_PUBLIC_PROJECT_ID!,
@@ -12,6 +13,7 @@ const config = defineConfig({
 	useCdn: true,
 	plugins: [
 		deskTool(),
+		codeInput(),
 		openaiImageAsset({
 			API_KEY: process.env.NEXT_PUBLIC_OPENAI!,
 		}),
