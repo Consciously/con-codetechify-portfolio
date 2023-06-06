@@ -9,7 +9,7 @@ const Header = () => {
 					codetechify.com
 				</Link>
 				<nav>
-					<ul className='flex space-x-4'>
+					<ul className='flex flex-col md:flex-row  md:space-x-4'>
 						<li>
 							<Link href='/about' className='uppercase font-semibold'>
 								About

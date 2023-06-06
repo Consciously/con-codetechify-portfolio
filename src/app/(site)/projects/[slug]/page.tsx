@@ -29,27 +29,25 @@ const page = async ({ params }: IProps) => {
 
 	return (
 		<section className='container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-4'>
-			<div className='flex flex-col order-2 md:order-1'>
-				<div>
-					<Link href='/' className='text-blue-500 underline'>
-						← Back to Home
-					</Link>
+			{/* <Link href='/' className='text-blue-500 underline'>
+				← Back to Home
+			</Link> */}
+			<div className='flex flex-col order-2 md:order-1 md:basis-1/2 md:flex-1'>
+				<figure className='bg-slate-500 flex justify-center, items-center mb-2 rounded-lg shadow-lg shadow-slate-900'>
 					<Image
 						src={project.image}
 						alt={project.title}
 						width={700}
 						height={350}
+						className='w-full h-auto rounded-lg'
 					/>
-				</div>
-				<div>
-					<div>
-						<h2 className='text-2xl'>Project Content:</h2>
-						<PortableText value={project.content} components={components} />
-					</div>
+				</figure>
+				<div className='p-4 bg-slate-500 mt-2 rounded-lg shadow-lg shadow-slate-900'>
+					<PortableText value={project.content} components={components} />
 				</div>
 			</div>
-			<div className='flex flex-col order-1 md:order-2 relative'>
-				<div className='mt-4'>
+			<div className='flex flex-col order-1 md:order-2 relative md:basis-1/2 md:flex-1'>
+				<div className='p-4 bg-slate-500 rounded-lg shadow-lg shadow-slate-900'>
 					<h1 className='bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center'>
 						{project.title}
 					</h1>
@@ -73,13 +71,13 @@ const page = async ({ params }: IProps) => {
 						View Live Demo
 					</a>
 				</div>
-				<div className=''>
-					<ul className='flex flex-col items-center justify-center md:items-start md:absolute md:top-1/2 md:left-1/2 md:translate-x-1/2 md:translate-y-1/2'>
-						{project.technologies.map((technology, idx) => (
-							<li key={idx}>{technology}</li>
-						))}
-					</ul>
-				</div>
+				<ul className='p-4 flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-slate-500 rounded-lg shadow-lg shadow-slate-900 w-1/2'>
+					{project.technologies.map((technology, idx) => (
+						<li key={idx} className='mt-4 uppercase'>
+							{technology}
+						</li>
+					))}
+				</ul>
 			</div>
 		</section>
 	);
