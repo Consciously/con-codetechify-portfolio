@@ -11,7 +11,7 @@ interface IProps {
 	};
 }
 
-const CodeBlock = ({ value }: IProps) => {
+const CodeComponent = ({ value }: IProps) => {
 	return (
 		<SyntaxHighLighter language={value.language} style={oneDark}>
 			{value.code}
@@ -19,4 +19,4 @@ const CodeBlock = ({ value }: IProps) => {
 	);
 };
 
-export default CodeBlock;
+export default CodeComponent;

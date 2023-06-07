@@ -4,8 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { PortableText } from '@portabletext/react';
-import CodeBlock from '../../components/CodeBlock';
-import { ICodeBlock } from '@/types';
+import type { PortableTextComponents } from '@portabletext/react';
+// import CodeComponent from '../../components/CodeComponent';
+import { ContentComponent } from '../../components/ContentComponent';
+// import { ICodeBlock } from '@/types';
 
 interface IProps {
 	params: {
@@ -13,13 +15,17 @@ interface IProps {
 	};
 }
 
-const codeBlock = ({ value }: ICodeBlock) => {
-	return <CodeBlock value={value} />;
-};
+// const codeBlock = ({ value }: ICodeBlock) => {
+// 	return <CodeComponent value={value} />;
+// };
 
-const components = {
-	types: {
-		code: codeBlock,
+const components: PortableTextComponents = {
+	// types: {
+	// 	code: codeBlock,
+	// },
+	block: {
+		h2: ContentComponent,
+		h3: ContentComponent,
 	},
 };
 
