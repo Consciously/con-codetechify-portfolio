@@ -73,7 +73,9 @@ export default async function Home() {
 				</div>
 			</section>
 			<section className='container mx-auto px-4 py-8'>
-				<h2 className='text-3xl text-center my-8'>Featured Projects</h2>
+				<h2 className='text-xl lg:text-3xl text-center my-8'>
+					Featured Projects
+				</h2>
 				<div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
 					{projects.map(project => (
 						<ProjectCard key={project._id} project={project} />

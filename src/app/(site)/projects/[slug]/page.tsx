@@ -27,6 +27,21 @@ const components: PortableTextComponents = {
 		h2: ContentComponent,
 		h3: ContentComponent,
 	},
+	list: {
+		bullet: ({ children }) => <ul className='ml-8'>{children}</ul>,
+	},
+	listItem: {
+		bullet: ({ children }) => (
+			<li
+				className='bg-slate-500 text-white'
+				style={{ listStyleType: 'disclosure-closed' }}
+			>
+				<span className='inline-block bg-white text-slate-500 px-2 mb-2'>
+					{children}
+				</span>
+			</li>
+		),
+	},
 };
 
 const page = async ({ params }: IProps) => {
@@ -48,11 +63,11 @@ const page = async ({ params }: IProps) => {
 						className='w-full h-auto rounded-lg'
 					/>
 				</figure>
-				<div className='p-4 bg-slate-500 mt-2 rounded-lg shadow-lg shadow-slate-900'>
+				<div className='flex flex-col p-4 bg-slate-500 mt-2 rounded-lg shadow-lg shadow-slate-900 gap-y-4'>
 					<PortableText value={project.content} components={components} />
 				</div>
 			</div>
-			<div className='flex flex-col order-1 md:order-2 relative md:basis-1/2 md:flex-1'>
+			<div className='flex flex-col order-1 md:order-2 relative md:basis-1/2 md:flex-1 gap-4'>
 				<div className='p-4 bg-slate-500 rounded-lg shadow-lg shadow-slate-900'>
 					<h1 className='bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center'>
 						{project.title}
@@ -77,10 +92,16 @@ const page = async ({ params }: IProps) => {
 						View Live Demo
 					</a>
 				</div>
-				<ul className='p-4 flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-slate-500 rounded-lg shadow-lg shadow-slate-900 w-1/2'>
+				<ul className='p-4 flex flex-col items-center justify-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-slate-500 rounded-lg shadow-lg shadow-slate-900 md:w-1/2'>
 					{project.technologies.map((technology, idx) => (
-						<li key={idx} className='mt-4 uppercase'>
-							{technology}
+						<li
+							key={idx}
+							className='mt-4 uppercase bg-slate-500 text-white'
+							style={{ listStyleType: 'disclosure-closed' }}
+						>
+							<span className='inline-block bg-white text-slate-500 px-2 mb-2'>
+								{technology}
+							</span>
 						</li>
 					))}
 				</ul>
