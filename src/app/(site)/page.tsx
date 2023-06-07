@@ -3,6 +3,7 @@ import SkillCard from './components/SkillCard';
 import ProjectCard from './components/ProjectCard';
 import BlogCard from './components/BlogCard';
 import profileImg from '@/public/images/me.jpg';
+import ButtonComponent from './components/ButtonComponent';
 import { getProjects, getSkills } from '@/sanity/sanityUtils';
 
 export default async function Home() {
@@ -57,9 +58,9 @@ export default async function Home() {
 									breadth of the tech landscape and savors the depth of specific
 									subjects.
 								</p>
-								<button className='bg-yellow-500 text-gray-800 rounded px-6 py-2 mt-4 hover:bg-yellow-600 transition-colors self-center'>
+								<ButtonComponent href='/' isPrimary>
 									Let&apos;s Connect
-								</button>
+								</ButtonComponent>
 							</div>
 						</div>
 					</div>

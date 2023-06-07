@@ -9,7 +9,11 @@ export const ContentComponent: PortableTextBlockComponent = ({
 
 	switch (value.style) {
 		case 'h2':
-			render = <h2 className='text-xl lg:text-3xl text-center'>{children}</h2>;
+			render = (
+				<h2 className='text-xl lg:text-3xl text-center uppercase'>
+					{children}
+				</h2>
+			);
 			break;
 
 		case 'h3':
