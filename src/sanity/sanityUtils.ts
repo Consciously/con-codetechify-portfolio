@@ -1,4 +1,4 @@
-import { IProject, ISkill } from '@/types';
+import { IProject, IPost, ISkill } from '@/types';
 import { createClient, groq } from 'next-sanity';
 import clientConfig from './config/clientConfig';
 
@@ -34,13 +34,13 @@ export const getProject = async (slug: string): Promise<IProject> => {
 	);
 };
 
-export const getPosts = async (): Promise<IProject[]> => {
+export const getPosts = async (): Promise<IPost[]> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "post"]{
       _id,
       _createdAt,
       title,
-      description,
+      excerpt,
       "slug": slug.current,
       "image": image.asset->url,
       githubRepository,
@@ -49,7 +49,7 @@ export const getPosts = async (): Promise<IProject[]> => {
 	);
 };
 
-export const getPost = async (slug: string): Promise<IProject> => {
+export const getPost = async (slug: string): Promise<IPost> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == 'post' && slug.current == $slug][0]{
       _id,

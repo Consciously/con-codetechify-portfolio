@@ -8,7 +8,6 @@ export interface IPost {
 	image: string;
 	excerpt: string;
 	content: PortableTextBlock[];
-	createdAt: Date;
-	author: string;
+	author?: string;
 	avatar?: string;
 }

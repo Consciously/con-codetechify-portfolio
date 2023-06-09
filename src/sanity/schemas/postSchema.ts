@@ -39,11 +39,6 @@ const post = {
 			of: [{ type: 'block' }, { type: 'code' }],
 		},
 		{
-			name: 'createdAt',
-			title: 'Created At',
-			type: 'datetime',
-		},
-		{
 			name: 'author',
 			title: 'Author',
 			type: 'string',
