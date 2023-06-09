@@ -1,7 +1,7 @@
 import { getPost } from '@/sanity/sanityUtils';
 import React from 'react';
 import Image from 'next/image';
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata} from 'next';
 import { format } from 'date-fns';
 import { PortableText } from '@portabletext/react';
 import type { PortableTextComponents } from '@portabletext/react';
