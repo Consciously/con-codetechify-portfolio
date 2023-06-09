@@ -23,7 +23,7 @@ const project = {
 			name: 'content',
 			title: 'Content',
 			type: 'array',
-			of: [{ type: 'block' }, { type: 'code' }],
+			of: [{ type: 'block' }],
 		},
 		{
 			name: 'technologies',
