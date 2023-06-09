@@ -22,7 +22,7 @@ const PostCard = ({ post }: IPostProp) => {
 
 	return (
 		<Link
-			href={`/projects/${post.slug}`}
+			href={`/posts/${post.slug}`}
 			className='flex flex-col md:flex-row md:max-w-2xl rounded-lg shadow-lg shadow-slate-900 h-full'
 		>
 			<div
