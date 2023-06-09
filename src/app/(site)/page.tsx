@@ -27,8 +27,8 @@ export default async function Home() {
 						<h1 className='bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center'>
 							Welcome to Codetechify
 						</h1>
-						<div className='flex flex-col md:flex-row h-full gap-x-8 justify-center items-center'>
-							<div className='w-full md:w-1/2 bg-slate-700 p-6 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8'>
+						<div className='flex flex-col md:flex-row gap-x-8 justify-center items-center'>
+							<div className='w-full md:w-1/2 bg-slate-700 rounded-lg shadow-lg flex flex-col items-center justify-center gap-8 p-4'>
 								<div className='w-64 h-64 rounded-full overflow-hidden relative object-cover'>
 									<Image
 										src={profileImg}
@@ -44,7 +44,7 @@ export default async function Home() {
 									<cite>— Linus Torvalds</cite>
 								</blockquote>
 							</div>
-							<div className='w-full md:w-1/2 border-4 border-slate-700 p-6 rounded-lg shadow-lg mt-8 md:mt-0 text-center md:text-left flex flex-col justify-center'>
+							<div className='w-full lg:w-1/2 border-4 border-slate-700 rounded-lg shadow-lg mt-8 md:mt-0 text-center md:text-left flex flex-col justify-center p-4'>
 								<p className='mb-4 text-lg leading-relaxed'>
 									<span className='font-semibold'>Hello!</span> I&apos;m Stefan
 									Ihle, a self-taught web developer who&apos;s fueled by an
@@ -58,9 +58,11 @@ export default async function Home() {
 									breadth of the tech landscape and savors the depth of specific
 									subjects.
 								</p>
-								<ButtonComponent href='/' isPrimary>
-									Let&apos;s Connect
-								</ButtonComponent>
+								<div className='flex justify-center items-center w-full'>
+									<ButtonComponent href='/' isPrimary>
+										Let&apos;s Connect
+									</ButtonComponent>
+								</div>
 							</div>
 						</div>
 					</div>
