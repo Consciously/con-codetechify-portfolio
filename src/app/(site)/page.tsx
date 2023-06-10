@@ -4,14 +4,18 @@ import ProjectCard from './components/ProjectCard';
 import PostCard from './components/PostCard';
 import profileImg from '@/public/images/me.jpg';
 import ButtonComponent from './components/ButtonComponent';
-import { getProjects, getPosts, getSkills } from '@/sanity/sanityUtils';
+import {
+	getFilteredProjectsForHome,
+	getFilteredPostsForHome,
+	getSkills,
+} from '@/sanity/sanityUtils';
 
 export default async function Home() {
-	const projects = await getProjects();
+	const projects = await getFilteredProjectsForHome();
 
 	const skills = await getSkills();
 
-	const posts = await getPosts();
+	const posts = await getFilteredPostsForHome();
 
 	return (
 		<>

@@ -17,6 +17,22 @@ export const getProjects = async (): Promise<IProject[]> => {
 	);
 };
 
+export const getFilteredProjectsForHome = async (): Promise<IProject[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "project"]|order(_updatedAt desc)[0..2]{
+      _id,
+      _createdAt,
+      _updatedAt,
+      title,
+      description,
+      "slug": slug.current,
+      "image": image.asset->url,
+      githubRepository,
+      liveDemo
+    }`,
+	);
+};
+
 export const getProject = async (slug: string): Promise<IProject> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == 'project' && slug.current == $slug][0]{
@@ -31,6 +47,22 @@ export const getProject = async (slug: string): Promise<IProject> => {
       liveDemo
     }`,
 		{ slug },
+	);
+};
+
+export const getFilteredPostsForHome = async (): Promise<IPost[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "post"]|order(_updatedAt desc)[0..2]{
+      _id,
+      _createdAt,
+      _updatedAt,
+      title,
+      excerpt,
+      "slug": slug.current,
+      "image": image.asset->url,
+      githubRepository,
+      liveDemo
+    }`,
 	);
 };
 
