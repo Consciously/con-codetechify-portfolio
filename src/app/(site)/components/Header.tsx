@@ -11,11 +11,6 @@ const Header = () => {
 				<nav>
 					<ul className='flex flex-col md:flex-row  md:space-x-4'>
 						<li>
-							<Link href='/about' className='uppercase font-semibold'>
-								About
-							</Link>
-						</li>
-						<li>
 							<Link href='/projects' className='uppercase font-semibold'>
 								Projects
 							</Link>
@@ -23,11 +18,6 @@ const Header = () => {
 						<li>
 							<Link href='/blog' className='uppercase font-semibold'>
 								Blog
-							</Link>
-						</li>
-						<li>
-							<Link href='/contact' className='uppercase font-semibold'>
-								Contact
 							</Link>
 						</li>
 					</ul>

@@ -1,4 +1,4 @@
-import { IProject, IPost, ISkill } from '@/types';
+import { IProject, IPost, ISkill, IFilterYearMonthProject } from '@/types';
 import { createClient, groq } from 'next-sanity';
 import clientConfig from './config/clientConfig';
 
@@ -31,6 +31,64 @@ export const getFilteredProjectsForHome = async (): Promise<IProject[]> => {
       liveDemo
     }`,
 	);
+};
+
+export const getProjectYears = async (): Promise<IFilterYearMonthProject[]> => {
+	const result: IProject[] = await createClient(clientConfig).fetch(
+		'*[_type == "project"]{ _id, _createdAt }',
+	);
+	const years = result.map(({ _id, _createdAt }) => ({
+		_id,
+		year: new Date(_createdAt).getFullYear(),
+	}));
+
+	const uniqueYears = Array.from(new Set(years.map(item => item.year))).map(
+		year => {
+			return {
+				_id: years.find(item => item.year === year)?._id as string,
+				year: year,
+			};
+		},
+	);
+
+	return uniqueYears;
+};
+
+export const getProjectMonths = async (): Promise<
+	IFilterYearMonthProject[]
+> => {
+	const result: IProject[] = await createClient(clientConfig).fetch(
+		groq`*[_type == "project"]{ _id, _createdAt}`,
+	);
+
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+
+	const months = result.map(({ _id, _createdAt }) => ({
+		_id,
+		month: monthNames[new Date(_createdAt).getMonth()],
+	}));
+
+	const uniqueMonths = Array.from(new Set(months.map(item => item.month))).map(
+		month => ({
+			_id: months.find(item => item.month === month)?._id as string,
+			month,
+		}),
+	);
+
+	return uniqueMonths;
 };
 
 export const getProject = async (slug: string): Promise<IProject> => {

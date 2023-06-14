@@ -13,3 +13,9 @@ export interface IProject {
 	githubRepository: string;
 	liveDemo: string;
 }
+
+export interface IFilterYearMonthProject {
+	_id: string;
+	year?: number;
+	month?: string;
+}

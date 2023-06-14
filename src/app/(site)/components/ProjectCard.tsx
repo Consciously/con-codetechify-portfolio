@@ -11,7 +11,7 @@ const ProjectCard = ({ project }: IProjectProp) => {
 	return (
 		<Link
 			href={`/projects/${project.slug}`}
-			className='flex flex-col md:flex-row md:max-w-2xl rounded-lg shadow-lg shadow-slate-900'
+			className='flex flex-col md:flex-row rounded-lg shadow-lg shadow-slate-900'
 		>
 			<Image
 				src={project.image}
