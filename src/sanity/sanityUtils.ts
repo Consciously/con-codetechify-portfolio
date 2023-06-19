@@ -90,7 +90,7 @@ export const getProjectMonths = async (): Promise<
 		}),
 	);
 
-	return months;
+	return uniqueMonths;
 };
 
 getProjectMonths().then(res => console.log(res));
