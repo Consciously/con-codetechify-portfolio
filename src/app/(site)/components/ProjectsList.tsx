@@ -14,16 +14,17 @@ const ProjectsList = ({ projects }: IProps) => {
 	const { checkedYears, checkedMonths } = useFilter();
 
 	const filteredProjects = projects.filter(project => {
-		// Use date-fns to parse the creation date and format it as a year.
-		const projectYear = format(project._createdAt, 'yyyy');
+		if (project._createdAt instanceof Date) {
+			const projectYear = format(project._createdAt, 'yyyy');
+			const projectMonth = format(project._createdAt, 'MMMM');
 
-		// Use date-fns to parse the creation date and format it as a month.
-		const projectMonth = format(project._createdAt, 'MMMM');
-
-		return (
-			(checkedYears.length === 0 || checkedYears.includes(projectYear)) &&
-			(checkedMonths.length === 0 || checkedMonths.includes(projectMonth))
-		);
+			return (
+				(checkedYears.length === 0 || checkedYears.includes(projectYear)) &&
+				(checkedMonths.length === 0 || checkedMonths.includes(projectMonth))
+			);
+		} else {
+			return false;
+		}
 	});
 
 	return (
