@@ -16,7 +16,7 @@ const FilterComponent = () => {
 	const [isShowYear, setIsShowYear] = useState<boolean>(false);
 	const [isShowMonth, setIsShowMonth] = useState<boolean>(false);
 
-	const handleYearChange = (year: string, checked: boolean) => {
+	const handleYearChange = (year: number, checked: boolean) => {
 		setCheckedYears(
 			checked ? [...checkedYears, year] : checkedYears.filter(y => y !== year),
 		);

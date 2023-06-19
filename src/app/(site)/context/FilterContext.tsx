@@ -5,8 +5,8 @@ import { IFilterYearMonthProject } from '@/types';
 import { getProjectYears, getProjectMonths } from '@/sanity/sanityUtils';
 
 interface IFilterContext {
-	checkedYears: string[];
-	setCheckedYears: React.Dispatch<React.SetStateAction<string[]>>;
+	checkedYears: number[];
+	setCheckedYears: React.Dispatch<React.SetStateAction<number[]>>;
 	checkedMonths: string[];
 	setCheckedMonths: React.Dispatch<React.SetStateAction<string[]>>;
 	years: IFilterYearMonthProject[];
@@ -20,7 +20,7 @@ interface IProps {
 const FilterContext = createContext<IFilterContext | undefined>(undefined);
 
 export const FilterProvider = ({ children }: IProps) => {
-	const [checkedYears, setCheckedYears] = useState<string[]>([]);
+	const [checkedYears, setCheckedYears] = useState<number[]>([]);
 	const [checkedMonths, setCheckedMonths] = useState<string[]>([]);
 	const [years, setYears] = useState<IFilterYearMonthProject[]>([]);
 	const [months, setMonths] = useState<IFilterYearMonthProject[]>([]);

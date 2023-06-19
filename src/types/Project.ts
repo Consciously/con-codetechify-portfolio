@@ -16,6 +16,6 @@ export interface IProject {
 
 export interface IFilterYearMonthProject {
 	_id: string;
-	year?: string;
+	year?: number;
 	month?: string;
 }

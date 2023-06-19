@@ -47,7 +47,7 @@ export const getProjectYears = async (): Promise<IFilterYearMonthProject[]> => {
 		year => {
 			return {
 				_id: years.find(item => item.year === year)?._id as string,
-				year: year as unknown as string,
+				year,
 			};
 		},
 	);
@@ -92,8 +92,6 @@ export const getProjectMonths = async (): Promise<
 
 	return uniqueMonths;
 };
-
-getProjectMonths().then(res => console.log(res));
 
 export const getProject = async (slug: string): Promise<IProject> => {
 	return createClient(clientConfig).fetch(
