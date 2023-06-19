@@ -21,7 +21,7 @@ const ProjectsList = ({ projects }: IProps) => {
 		const projectMonth = format(project._createdAt, 'MMMM');
 
 		return (
-			(checkedYears.length === 0 || checkedYears.includes(+projectYear)) &&
+			(checkedYears.length === 0 || checkedYears.includes(projectYear)) &&
 			(checkedMonths.length === 0 || checkedMonths.includes(projectMonth))
 		);
 	});
