@@ -27,13 +27,10 @@ export const FilterProvider = ({ children }: IProps) => {
 
 	useEffect(() => {
 		const fetchYearsAndMonths = async () => {
-			// const [yearsData, monthsData] = await Promise.all([
-			// 	getProjectYears(),
-			// 	getProjectMonths(),
-			// ]);
-
-			const yearsData = await getProjectYears();
-			const monthsData = await getProjectMonths();
+			const [yearsData, monthsData] = await Promise.all([
+				getProjectYears(),
+				getProjectMonths(),
+			]);
 
 			setYears(yearsData);
 			setMonths(monthsData);

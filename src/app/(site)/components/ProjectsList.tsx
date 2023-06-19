@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { parseISO, format } from 'date-fns';
 import { useFilter } from '../context/FilterContext';
 import { IProject } from '@/types';
 import ProjectCard from './ProjectCard';
@@ -13,14 +14,14 @@ const ProjectsList = ({ projects }: IProps) => {
 	const { checkedYears, checkedMonths } = useFilter();
 
 	const filteredProjects = projects.filter(project => {
-		const projectYear = new Date(project._createdAt).getFullYear();
-		const projectMonth = new Date(project._createdAt).toLocaleString(
-			'default',
-			{ month: 'long' },
-		);
+		// Use date-fns to parse the creation date and format it as a year.
+		const projectYear = format(project._createdAt, 'yyyy');
+
+		// Use date-fns to parse the creation date and format it as a month.
+		const projectMonth = format(project._createdAt, 'MMMM');
 
 		return (
-			(checkedYears.length === 0 || checkedYears.includes(projectYear)) &&
+			(checkedYears.length === 0 || checkedYears.includes(+projectYear)) &&
 			(checkedMonths.length === 0 || checkedMonths.includes(projectMonth))
 		);
 	});
