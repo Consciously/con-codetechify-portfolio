@@ -32,15 +32,16 @@ export const getFilteredProjectsForHome = async (): Promise<IProject[]> => {
     }`,
 	);
 };
-
 export const getProjectYears = async (): Promise<IFilterYearMonthProject[]> => {
 	const result: IProject[] = await createClient(clientConfig).fetch(
 		'*[_type == "project"]{ _id, _createdAt }',
+		{ cache: 'no-store' },
 	);
 	const years = result.map(({ _id, _createdAt }) => ({
 		_id,
 		year: new Date(_createdAt).getFullYear(),
 	}));
+	getProjectMonths;
 
 	const uniqueYears = Array.from(new Set(years.map(item => item.year))).map(
 		year => {
@@ -59,6 +60,7 @@ export const getProjectMonths = async (): Promise<
 > => {
 	const result: IProject[] = await createClient(clientConfig).fetch(
 		groq`*[_type == "project"]{ _id, _createdAt}`,
+		{ cache: 'no-store' },
 	);
 
 	const monthNames = [
@@ -88,8 +90,10 @@ export const getProjectMonths = async (): Promise<
 		}),
 	);
 
-	return uniqueMonths;
+	return months;
 };
+
+getProjectMonths().then(res => console.log(res));
 
 export const getProject = async (slug: string): Promise<IProject> => {
 	return createClient(clientConfig).fetch(
