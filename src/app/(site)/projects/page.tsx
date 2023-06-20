@@ -7,7 +7,7 @@ const ProjectsPage = async () => {
 	const projects = await getProjects();
 
 	return (
-		<section className='container mx-auto flex flex-col xl:flex-row px-4 py-8 w-full gap-8  md:h-screen'>
+		<section className='container mx-auto flex flex-col xl:flex-row px-4 py-8 w-full gap-4  lg:h-screen'>
 			<div className='basis-full md:basis-1/4 xl:basis-1/5 flex-auto'>
 				<FilterSidebar />
 			</div>
