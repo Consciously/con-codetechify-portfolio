@@ -2,6 +2,7 @@ import { IProject, IPost, ISkill, IFilterYearMonthProject } from '@/types';
 import { createClient, groq } from 'next-sanity';
 import clientConfig from './config/clientConfig';
 
+// Get all projects data
 export const getProjects = async (): Promise<IProject[]> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "project"]{
@@ -17,7 +18,22 @@ export const getProjects = async (): Promise<IProject[]> => {
 	);
 };
 
-export const getFilteredProjectsForHome = async (): Promise<IProject[]> => {
+// Get all essential projects data
+export const getProjectsEssential = async (): Promise<IProject[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "project"]{
+			_id,
+			_createdAt,
+			"slug": slug.current,
+			"image": image.asset->url,
+			title
+			description
+		}`,
+	);
+};
+
+// Get all filtered projects data for home page
+export const getFilteredProjectsForHomePage = async (): Promise<IProject[]> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "project"]|order(_updatedAt desc)[0..2]{
       _id,
@@ -32,6 +48,25 @@ export const getFilteredProjectsForHome = async (): Promise<IProject[]> => {
     }`,
 	);
 };
+
+// Get all filtered essential projects data for home page
+export const getFilteredEssentialProjectsForHomePage = async (): Promise<
+	IProject[]
+> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "project"]|order(_updatedAt desc)[0..2]{
+      _id,
+      _createdAt,
+      _updatedAt,
+			"slug": slug.current,
+			"image": image.asset->url,
+      title,
+      description
+    }`,
+	);
+};
+
+// Get all projects years information
 export const getProjectYears = async (): Promise<IFilterYearMonthProject[]> => {
 	const result: IProject[] = await createClient(clientConfig).fetch(
 		'*[_type == "project"]{ _id, _createdAt }',
@@ -55,6 +90,7 @@ export const getProjectYears = async (): Promise<IFilterYearMonthProject[]> => {
 	return uniqueYears;
 };
 
+// Get all projects months information
 export const getProjectMonths = async (): Promise<
 	IFilterYearMonthProject[]
 > => {
@@ -93,6 +129,7 @@ export const getProjectMonths = async (): Promise<
 	return uniqueMonths;
 };
 
+// Get single project data
 export const getProject = async (slug: string): Promise<IProject> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == 'project' && slug.current == $slug][0]{
@@ -110,22 +147,7 @@ export const getProject = async (slug: string): Promise<IProject> => {
 	);
 };
 
-export const getFilteredPostsForHome = async (): Promise<IPost[]> => {
-	return createClient(clientConfig).fetch(
-		groq`*[_type == "post"]|order(_updatedAt desc)[0..2]{
-      _id,
-      _createdAt,
-      _updatedAt,
-      title,
-      excerpt,
-      "slug": slug.current,
-      "image": image.asset->url,
-      githubRepository,
-      liveDemo
-    }`,
-	);
-};
-
+// Get all posts data
 export const getPosts = async (): Promise<IPost[]> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == "post"]{
@@ -141,6 +163,55 @@ export const getPosts = async (): Promise<IPost[]> => {
 	);
 };
 
+// Get all essential posts data
+export const getPostsEssential = async (): Promise<IPost[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "post"]{
+			_id,
+			_createdAt,
+			"slug": slug.current,
+			"image": image.asset->url,
+			title
+			excerpt
+		}`,
+	);
+};
+
+// Get all filtered posts data for home page
+export const getFilteredPostsForHomePage = async (): Promise<IPost[]> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "post"]|order(_updatedAt desc)[0..2]{
+      _id,
+      _createdAt,
+      _updatedAt,
+      title,
+      excerpt,
+      "slug": slug.current,
+      "image": image.asset->url,
+      githubRepository,
+      liveDemo
+    }`,
+	);
+};
+
+// Get all filtered essential posts data for home page
+export const getFilteredEssentialPostsForHomePage = async (): Promise<
+	IPost[]
+> => {
+	return createClient(clientConfig).fetch(
+		groq`*[_type == "post"]|order(_updatedAt desc)[0..2]{
+      _id,
+      _createdAt,
+      _updatedAt,
+			"slug": slug.current,
+			"image": image.asset->url,
+      title,
+      excerpt
+    }`,
+	);
+};
+
+// Get single post data
 export const getPost = async (slug: string): Promise<IPost> => {
 	return createClient(clientConfig).fetch(
 		groq`*[_type == 'post' && slug.current == $slug][0]{

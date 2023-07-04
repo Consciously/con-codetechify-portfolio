@@ -5,17 +5,17 @@ import PostCard from './components/PostCard';
 import profileImg from '@/public/images/me.jpg';
 import ButtonComponent from './components/ButtonComponent';
 import {
-	getFilteredProjectsForHome,
-	getFilteredPostsForHome,
+	getFilteredEssentialProjectsForHomePage,
+	getFilteredEssentialPostsForHomePage,
 	getSkills,
 } from '@/sanity/sanityUtils';
 
 export default async function Home() {
-	const projects = await getFilteredProjectsForHome();
+	const projects = await getFilteredEssentialProjectsForHomePage();
 
 	const skills = await getSkills();
 
-	const posts = await getFilteredPostsForHome();
+	const posts = await getFilteredEssentialPostsForHomePage();
 
 	return (
 		<>
