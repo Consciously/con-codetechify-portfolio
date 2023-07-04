@@ -5,11 +5,11 @@ import { IProject } from '@/types';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-interface IProjectProp {
+interface IProp {
 	project: IProject;
 }
 
-const ProjectCard = ({ project }: IProjectProp) => {
+const ProjectCard = ({ project }: IProp) => {
 	const [hover, setHover] = useState(false);
 	const router = useRouter();
 
@@ -21,21 +21,21 @@ const ProjectCard = ({ project }: IProjectProp) => {
 		setHover(false);
 	}, []);
 
+	const triggerAction = useCallback(() => {
+		router.push(`/projects/hover/${project.slug}`);
+	}, [router, project.slug]);
+
 	useEffect(() => {
 		let timeoutId: NodeJS.Timeout;
 
-		const triggerAction = () => {
-			router.push(`/projects/hover/${project.slug}`);
-		};
-
 		if (hover) {
-			timeoutId = setTimeout(triggerAction, 2000);
+			timeoutId = setTimeout(triggerAction, 500);
 		}
 
 		return () => {
 			clearTimeout(timeoutId);
 		};
-	}, [hover]);
+	}, [hover, triggerAction]);
 
 	return (
 		<div className='flex flex-col md:flex-row rounded-lg shadow-lg shadow-slate-900'>
@@ -51,11 +51,7 @@ const ProjectCard = ({ project }: IProjectProp) => {
 				onMouseEnter={onHover}
 				onMouseLeave={onLeave}
 			>
-				{hover ? (
-					<p className='text-base'>{project.description}</p>
-				) : (
-					<h3 className='text-lg lg:text-2xl font-bold'>{project.title}</h3>
-				)}
+				<h3 className='text-lg lg:text-2xl font-bold'>{project.title}</h3>
 			</div>
 		</div>
 	);

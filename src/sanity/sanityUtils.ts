@@ -27,7 +27,6 @@ export const getProjectsEssential = async (): Promise<IProject[]> => {
 			"slug": slug.current,
 			"image": image.asset->url,
 			title
-			description
 		}`,
 	);
 };
@@ -60,8 +59,7 @@ export const getFilteredEssentialProjectsForHomePage = async (): Promise<
       _updatedAt,
 			"slug": slug.current,
 			"image": image.asset->url,
-      title,
-      description
+      title
     }`,
 	);
 };
@@ -172,7 +170,6 @@ export const getPostsEssential = async (): Promise<IPost[]> => {
 			"slug": slug.current,
 			"image": image.asset->url,
 			title
-			excerpt
 		}`,
 	);
 };
@@ -205,8 +202,7 @@ export const getFilteredEssentialPostsForHomePage = async (): Promise<
       _updatedAt,
 			"slug": slug.current,
 			"image": image.asset->url,
-      title,
-      excerpt
+      title
     }`,
 	);
 };

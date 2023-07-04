@@ -1,10 +1,22 @@
 import React from 'react';
 import Modal from '@/app/(site)/components/ModalComponent';
+import ExtendedProjectCard from '@/app/(site)/components/ExtendedProjectCard';
+import { getProject } from '@/sanity/sanityUtils';
 
-const ProjectModal = () => {
+interface IProps {
+	params: {
+		slug: string;
+	};
+}
+
+const ProjectModal = async ({ params }: IProps) => {
+	const slug = params.slug;
+
+	const project = await getProject(slug);
+
 	return (
 		<Modal>
-			<div>Hovered Project!</div>
+			<ExtendedProjectCard project={project} />
 		</Modal>
 	);
 };
