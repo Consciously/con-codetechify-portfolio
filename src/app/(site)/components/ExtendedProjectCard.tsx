@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IProject } from '@/types';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useProjectCtx } from '../context/ProjectContext';
 
 interface IProp {
 	project: IProject;
@@ -11,9 +12,12 @@ interface IProp {
 
 const ExtendedProjectCard = ({ project }: IProp) => {
 	const router = useRouter();
-
+	const pathname = usePathname();
 	const handleClick = () => {
-		router.push(`/projects/${project.slug}`);
+		router.push(`/projects/hover/${project.slug}`);
+		if (pathname === `/projects/hover/${project.slug}`) {
+			window.location.replace(`/projects/${project.slug}`);
+		}
 	};
 
 	return (

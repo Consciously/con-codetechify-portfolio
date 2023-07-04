@@ -6,7 +6,8 @@ import { getProject } from '@/sanity/sanityUtils';
 
 interface IProjectContext {
 	project: IProject;
-	setSlug: React.Dispatch<React.SetStateAction<string>>;
+	setSlug: React.Dispatch<React.SetStateAction<string | null>>;
+	slug: string | null;
 }
 
 interface IProps {
@@ -17,12 +18,14 @@ const ProjectContext = createContext<IProjectContext | undefined>(undefined);
 
 export const ProjectProvider = ({ children }: IProps) => {
 	const [project, setProject] = useState<IProject>();
-	const [slug, setSlug] = useState<string>('');
+	const [slug, setSlug] = useState<string | null>(null);
 
 	useEffect(() => {
 		const fetchProject = async () => {
-			const project = await getProject(slug);
-			setProject(project);
+			if (slug) {
+				const project = await getProject(slug);
+				setProject(project);
+			}
 		};
 
 		fetchProject();
@@ -33,6 +36,7 @@ export const ProjectProvider = ({ children }: IProps) => {
 			value={{
 				project: project!,
 				setSlug,
+				slug,
 			}}
 		>
 			{children}

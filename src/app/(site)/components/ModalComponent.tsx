@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Modal = ({ children }: IProps) => {
-	const { project } = useProjectCtx();
+	const { slug, project } = useProjectCtx();
 
 	const overlay = useRef<HTMLDivElement>(null);
 	const wrapper = useRef<HTMLDivElement>(null);
