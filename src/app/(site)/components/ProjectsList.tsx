@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { format } from 'date-fns';
-import { useFilter } from '../context/FilterContext';
+import { useFilterCtx } from '../context/FilterContext';
 import { IProject } from '@/types';
 import ProjectCard from './ProjectCard';
 
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const ProjectsList = ({ projects }: IProps) => {
-	const { checkedYears, checkedMonths } = useFilter();
+	const { checkedYears, checkedMonths } = useFilterCtx();
 
 	const filteredProjects = projects.filter(project => {
 		const projectYear = parseInt(format(new Date(project._createdAt), 'yyyy'));

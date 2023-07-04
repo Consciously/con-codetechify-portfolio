@@ -55,7 +55,7 @@ export const FilterProvider = ({ children }: IProps) => {
 	);
 };
 
-export const useFilter = () => {
+export const useFilterCtx = () => {
 	const context = useContext(FilterContext);
 
 	if (context === undefined) {

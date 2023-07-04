@@ -1,13 +1,16 @@
 'use client';
 
-import React, { useCallback, useRef, useEffect, ReactNode } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useProjectCtx } from '../context/ProjectContext';
 
 interface IProps {
-	children: ReactNode;
+	children: React.ReactNode;
 }
 
 const Modal = ({ children }: IProps) => {
+	const { project } = useProjectCtx();
+
 	const overlay = useRef<HTMLDivElement>(null);
 	const wrapper = useRef<HTMLDivElement>(null);
 	const router = useRouter();
@@ -19,7 +22,7 @@ const Modal = ({ children }: IProps) => {
 	const handleClick = useCallback(
 		(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 			if (e.target === overlay.current || e.target === wrapper.current) {
-				if (handleDismiss) handleDismiss();
+				handleDismiss();
 			}
 		},
 		[handleDismiss, overlay, wrapper],

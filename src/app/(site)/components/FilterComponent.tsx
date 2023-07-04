@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useFilter } from '../context/FilterContext';
+import { useFilterCtx } from '../context/FilterContext';
 
 const FilterComponent = () => {
 	const {
@@ -11,7 +11,7 @@ const FilterComponent = () => {
 		setCheckedMonths,
 		years,
 		months,
-	} = useFilter();
+	} = useFilterCtx();
 
 	const [isShowYear, setIsShowYear] = useState<boolean>(false);
 	const [isShowMonth, setIsShowMonth] = useState<boolean>(false);

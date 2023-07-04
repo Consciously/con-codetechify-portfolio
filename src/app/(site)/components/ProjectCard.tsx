@@ -4,12 +4,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { IProject } from '@/types';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useProjectCtx } from '../context/ProjectContext';
 
 interface IProp {
 	project: IProject;
 }
 
 const ProjectCard = ({ project }: IProp) => {
+	const { setSlug } = useProjectCtx();
 	const [hover, setHover] = useState(false);
 	const router = useRouter();
 
@@ -22,8 +24,9 @@ const ProjectCard = ({ project }: IProp) => {
 	}, []);
 
 	const triggerAction = useCallback(() => {
+		setSlug(project.slug);
 		router.push(`/projects/hover/${project.slug}`);
-	}, [router, project.slug]);
+	}, [router, project.slug, setSlug]);
 
 	useEffect(() => {
 		let timeoutId: NodeJS.Timeout;
