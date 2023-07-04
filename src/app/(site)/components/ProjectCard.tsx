@@ -25,7 +25,7 @@ const ProjectCard = ({ project }: IProjectProp) => {
 		let timeoutId: NodeJS.Timeout;
 
 		const triggerAction = () => {
-			console.log('Long Hovering was triggered');
+			router.push(`/projects/hover/${project.slug}`);
 		};
 
 		if (hover) {

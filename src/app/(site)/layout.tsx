@@ -3,6 +3,7 @@ import { Roboto_Mono, Fira_Mono } from 'next/font/google';
 import { FilterProvider } from './context/FilterContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ReactNode } from 'react';
 
 export const robotoMono = Roboto_Mono({
 	subsets: ['latin'],
@@ -18,17 +19,19 @@ export const metadata = {
 	description: 'This is my portfolio site',
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+interface IProps {
+	children: ReactNode;
+	modal: ReactNode;
+}
+
+export default function RootLayout({ children, modal }: IProps) {
 	return (
 		<html lang='en'>
 			<body className={`text-white bg-slate-700 ${robotoMono.className}`}>
 				<FilterProvider>
 					<Header />
 					<main>{children}</main>
+					{modal}
 					<Footer />
 				</FilterProvider>
 			</body>
