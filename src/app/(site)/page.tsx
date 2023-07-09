@@ -1,23 +1,21 @@
 import Image from 'next/image';
 import SkillCard from './components/SkillCard';
 import ProjectCard from './components/ProjectCard';
-import BlogCard from './components/BlogCard';
+import PostCard from './components/PostCard';
 import profileImg from '@/public/images/me.jpg';
 import ButtonComponent from './components/ButtonComponent';
-import { getProjects, getSkills } from '@/sanity/sanityUtils';
+import {
+	getFilteredProjectsForHome,
+	getFilteredPostsForHome,
+	getSkills,
+} from '@/sanity/sanityUtils';
 
 export default async function Home() {
-	const projects = await getProjects();
+	const projects = await getFilteredProjectsForHome();
 
 	const skills = await getSkills();
 
-	const blogPosts = [
-		{ id: '1', title: 'Blog Post 1', description: 'This is blog post 1' },
-		{ id: '2', title: 'Blog Post 2', description: 'This is blog post 2' },
-		{ id: '3', title: 'Blog Post 3', description: 'This is blog post 3' },
-		{ id: '4', title: 'Blog Post 4', description: 'This is blog post 4' },
-		// Add more blog posts as needed
-	];
+	const posts = await getFilteredPostsForHome();
 
 	return (
 		<>
@@ -86,10 +84,12 @@ export default async function Home() {
 				</div>
 			</section>
 			<section className='container mx-auto px-4 py-8'>
-				<h2 className='text-3xl text-center my-8'>Recent Blog Posts</h2>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-					{blogPosts.map(post => (
-						<BlogCard key={post.id} post={post} />
+				<h2 className='text-xl lg:text-3xl text-center my-8'>
+					Recent Blog Posts
+				</h2>
+				<div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
+					{posts.map(post => (
+						<PostCard key={post._id} post={post} />
 					))}
 				</div>
 			</section>

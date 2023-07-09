@@ -1,6 +1,6 @@
-const project = {
-	name: 'project',
-	title: 'Projects',
+const post = {
+	name: 'post',
+	title: 'Posts',
 	type: 'document',
 	fields: [
 		{
@@ -13,23 +13,6 @@ const project = {
 			title: 'Slug',
 			type: 'slug',
 			options: { source: 'title' },
-		},
-		{
-			name: 'description',
-			title: 'Description',
-			type: 'text',
-		},
-		{
-			name: 'content',
-			title: 'Content',
-			type: 'array',
-			of: [{ type: 'block' }],
-		},
-		{
-			name: 'technologies',
-			title: 'Technologies',
-			type: 'array',
-			of: [{ type: 'string' }],
 		},
 		{
 			name: 'image',
@@ -45,16 +28,35 @@ const project = {
 			],
 		},
 		{
-			name: 'githubRepository',
-			title: 'Github Repository',
-			type: 'url',
+			name: 'excerpt',
+			title: 'Excerpt',
+			type: 'text',
 		},
 		{
-			name: 'liveDemo',
-			title: 'Live Demo',
-			type: 'url',
+			name: 'content',
+			title: 'Content',
+			type: 'array',
+			of: [{ type: 'block' }, { type: 'code' }],
+		},
+		{
+			name: 'author',
+			title: 'Author',
+			type: 'string',
+		},
+		{
+			name: 'avatar',
+			title: 'Avatar',
+			type: 'image',
+			options: { hotspot: true },
+			fields: [
+				{
+					name: 'alt',
+					title: 'Alt',
+					type: 'string',
+				},
+			],
 		},
 	],
 };
 
-export default project;
+export default post;

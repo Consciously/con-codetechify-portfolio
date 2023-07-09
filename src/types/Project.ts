@@ -3,6 +3,7 @@ import { PortableTextBlock } from 'sanity';
 export interface IProject {
 	_id: string;
 	_createdAt: Date;
+	_updatedAt?: Date;
 	title: string;
 	description: string;
 	content: PortableTextBlock[];
@@ -11,4 +12,10 @@ export interface IProject {
 	image: string;
 	githubRepository: string;
 	liveDemo: string;
+}
+
+export interface IFilterYearMonthProject {
+	_id: string;
+	year?: number;
+	month?: string;
 }

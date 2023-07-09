@@ -1,5 +1,6 @@
 import '../globals.css';
 import { Roboto_Mono, Fira_Mono } from 'next/font/google';
+import { FilterProvider } from './context/FilterContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -13,8 +14,8 @@ export const firaMono = Fira_Mono({
 });
 
 export const metadata = {
-	title: 'Create Next App',
-	description: 'My portfolio website',
+	title: 'codetechify.com',
+	description: 'This is my portfolio site',
 };
 
 export default function RootLayout({
@@ -25,9 +26,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`text-white bg-slate-700 ${robotoMono.className}`}>
-				<Header />
-				<main>{children}</main>
-				<Footer />
+				<FilterProvider>
+					<Header />
+					<main>{children}</main>
+					<Footer />
+				</FilterProvider>
 			</body>
 		</html>
 	);
