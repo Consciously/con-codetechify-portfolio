@@ -18,19 +18,6 @@ export const getProjects = async (): Promise<IProject[]> => {
 	);
 };
 
-// Get all essential projects data
-export const getProjectsEssential = async (): Promise<IProject[]> => {
-	return createClient(clientConfig).fetch(
-		groq`*[_type == "project"]{
-			_id,
-			_createdAt,
-			"slug": slug.current,
-			"image": image.asset->url,
-			title
-		}`,
-	);
-};
-
 // Get all filtered projects data for home page
 export const getFilteredProjectsForHomePage = async (): Promise<IProject[]> => {
 	return createClient(clientConfig).fetch(
@@ -44,22 +31,6 @@ export const getFilteredProjectsForHomePage = async (): Promise<IProject[]> => {
       "image": image.asset->url,
       githubRepository,
       liveDemo
-    }`,
-	);
-};
-
-// Get all filtered essential projects data for home page
-export const getFilteredEssentialProjectsForHomePage = async (): Promise<
-	IProject[]
-> => {
-	return createClient(clientConfig).fetch(
-		groq`*[_type == "project"]|order(_updatedAt desc)[0..2]{
-      _id,
-      _createdAt,
-      _updatedAt,
-			"slug": slug.current,
-			"image": image.asset->url,
-      title
     }`,
 	);
 };
@@ -136,6 +107,7 @@ export const getProject = async (slug: string): Promise<IProject> => {
       title,
       technologies,
       content,
+			description,
       "slug": slug.current,
       "image": image.asset->url,
       githubRepository,
@@ -161,19 +133,6 @@ export const getPosts = async (): Promise<IPost[]> => {
 	);
 };
 
-// Get all essential posts data
-export const getPostsEssential = async (): Promise<IPost[]> => {
-	return createClient(clientConfig).fetch(
-		groq`*[_type == "post"]{
-			_id,
-			_createdAt,
-			"slug": slug.current,
-			"image": image.asset->url,
-			title
-		}`,
-	);
-};
-
 // Get all filtered posts data for home page
 export const getFilteredPostsForHomePage = async (): Promise<IPost[]> => {
 	return createClient(clientConfig).fetch(
@@ -191,22 +150,6 @@ export const getFilteredPostsForHomePage = async (): Promise<IPost[]> => {
 	);
 };
 
-// Get all filtered essential posts data for home page
-export const getFilteredEssentialPostsForHomePage = async (): Promise<
-	IPost[]
-> => {
-	return createClient(clientConfig).fetch(
-		groq`*[_type == "post"]|order(_updatedAt desc)[0..2]{
-      _id,
-      _createdAt,
-      _updatedAt,
-			"slug": slug.current,
-			"image": image.asset->url,
-      title
-    }`,
-	);
-};
-
 // Get single post data
 export const getPost = async (slug: string): Promise<IPost> => {
 	return createClient(clientConfig).fetch(
@@ -216,6 +159,7 @@ export const getPost = async (slug: string): Promise<IPost> => {
       title,
       technologies,
       content,
+			excerpt,
       "slug": slug.current,
       "image": image.asset->url,
       githubRepository,

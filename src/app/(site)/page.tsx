@@ -5,17 +5,17 @@ import PostCard from './components/PostCard';
 import profileImg from '@/public/images/me.jpg';
 import ButtonComponent from './components/ButtonComponent';
 import {
-	getFilteredEssentialProjectsForHomePage,
-	getFilteredEssentialPostsForHomePage,
+	getFilteredProjectsForHomePage,
+	getFilteredPostsForHomePage,
 	getSkills,
 } from '@/sanity/sanityUtils';
 
 export default async function Home() {
-	const projects = await getFilteredEssentialProjectsForHomePage();
+	const projects = await getFilteredProjectsForHomePage();
 
 	const skills = await getSkills();
 
-	const posts = await getFilteredEssentialPostsForHomePage();
+	const posts = await getFilteredPostsForHomePage();
 
 	return (
 		<>
@@ -56,8 +56,8 @@ export default async function Home() {
 									breadth of the tech landscape and savors the depth of specific
 									subjects.
 								</p>
-								<div className='flex justify-center items-center w-full'>
-									<ButtonComponent href='/' isPrimary>
+								<div className='flex justify-center items-center w-1/4 mx-auto'>
+									<ButtonComponent href='/' isLight>
 										Let&apos;s Connect
 									</ButtonComponent>
 								</div>

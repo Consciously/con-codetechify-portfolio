@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
-
 import { IPost } from '@/types';
+import Image from 'next/image';
+import Link from 'next/link';
 
-interface IPostProp {
+interface IProp {
 	post: IPost;
 }
 
-const PostCard = ({ post }: IPostProp) => {
+const ProjectCard = ({ post }: IProp) => {
 	const [hover, setHover] = useState(false);
 
 	const onHover = () => {
@@ -21,29 +21,32 @@ const PostCard = ({ post }: IPostProp) => {
 	};
 
 	return (
-		<div className='flex flex-col md:flex-row md:max-w-2xl rounded-lg shadow-lg shadow-slate-900 h-full'>
-			<div
-				className='flex flex-col justify-center items-center w-full h-64 gap-y-8 p-2 sm:p-4 lg:p-8  leading-normal border-2 border-t-0 md:border-t-2 md:border-l-0 border-slate-500 text-slate-950 hover:border-transparent bg-slate-500 hover:bg-rose-500 hover:text-white rounded-lg rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none transition duration-300'
-				onMouseEnter={onHover}
-				onMouseLeave={onLeave}
-			>
-				{hover ? (
-					<p className='text-base'>{post.excerpt}</p>
-				) : (
-					<h3 className='text-lg lg:text-2xl text-center font-bold'>
-						{post.title}
-					</h3>
-				)}
+		<Link href={`/projects/hover/${post.slug}`}>
+			<div className='flex flex-col md:flex-row h-60 rounded-lg shadow-lg shadow-slate-900'>
+				<figure className='relative w-5/12 h-full overflow-hidden'>
+					<Image
+						src={post.image}
+						alt={post.title}
+						fill
+						className='object-cover w-full md:w-48 h-auto rounded-t-lg md:rounded-none md:rounded-l-lg'
+					/>
+				</figure>
+				<div
+					className='flex flex-col justify-center w-7/12 h-full gap-y-8 p-2 sm:p-4 lg:p-8  leading-normal border-2 border-t-0 md:border-t-2 md:border-l-0 border-slate-500 text-slate-950 hover:border-transparent bg-slate-500 hover:bg-rose-500 hover:text-white rounded-lg rounded-t-none md:rounded-r-lg md:rounded-l-none transition duration-300'
+					onMouseEnter={onHover}
+					onMouseLeave={onLeave}
+				>
+					{hover ? (
+						<p className='text-base'>{post.excerpt}</p>
+					) : (
+						<h3 className='text-lg lg:text-2xl text-center font-bold'>
+							{post.title}
+						</h3>
+					)}
+				</div>
 			</div>
-			<Image
-				src={post.image}
-				alt={post.title}
-				width={200}
-				height={200}
-				className='object-cover w-full md:w-48 h-auto rounded-lg rounded-t-none md:rounded-none md:rounded-r-lg'
-			/>
-		</div>
+		</Link>
 	);
 };
 
-export default PostCard;
+export default ProjectCard;

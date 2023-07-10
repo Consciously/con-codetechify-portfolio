@@ -1,7 +1,7 @@
 import { getPost } from '@/sanity/sanityUtils';
 import React from 'react';
 import Image from 'next/image';
-import { Metadata} from 'next';
+import { Metadata } from 'next';
 import { format } from 'date-fns';
 import { PortableText } from '@portabletext/react';
 import type { PortableTextComponents } from '@portabletext/react';
@@ -78,9 +78,11 @@ const PostDetail = async ({ params }: IProps) => {
 				</div>
 			</div>
 			<div className='flex flex-col order-1 md:order-2 relative md:basis-1/2 md:flex-1 gap-4'>
-				<ButtonComponent href='/' isPrimary>
-					← Back to Home
-				</ButtonComponent>
+				<div className='flex justify-center items-center w-1/4 mx-auto'>
+					<ButtonComponent isLight href='/'>
+						← Back to Home
+					</ButtonComponent>
+				</div>
 				<div className='p-4 bg-slate-500 rounded-lg shadow-lg shadow-slate-900'>
 					<h1 className='bg-gradient-to-r from-white via-rose-500 to-rose-950 bg-clip-text text-transparent text-5xl md:text-7xl font-medium md:font-semibold mb-8 uppercase text-center'>
 						{post.title}

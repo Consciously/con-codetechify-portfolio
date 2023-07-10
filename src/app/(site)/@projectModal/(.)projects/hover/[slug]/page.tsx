@@ -1,12 +1,18 @@
-'use client';
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import Modal from '@/app/(site)/components/ModalComponent';
 import ExtendedProjectCard from '@/app/(site)/components/ExtendedProjectCard';
-import { useProjectCtx } from '@/app/(site)/context/ProjectContext';
+import { getProject } from '@/sanity/sanityUtils';
 
-const ProjectModal = () => {
-	const { project } = useProjectCtx();
+interface IProps {
+	params: {
+		slug: string;
+	};
+}
+
+const ProjectModal = async ({ params }: IProps) => {
+	const slug = params.slug;
+
+	const project = await getProject(slug);
 
 	return (
 		<Modal>

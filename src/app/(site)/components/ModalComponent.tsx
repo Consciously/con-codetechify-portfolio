@@ -2,15 +2,12 @@
 
 import React, { useCallback, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useProjectCtx } from '../context/ProjectContext';
 
 interface IProps {
 	children: React.ReactNode;
 }
 
 const Modal = ({ children }: IProps) => {
-	const { slug, project } = useProjectCtx();
-
 	const overlay = useRef<HTMLDivElement>(null);
 	const wrapper = useRef<HTMLDivElement>(null);
 	const router = useRouter();
@@ -47,7 +44,7 @@ const Modal = ({ children }: IProps) => {
 		>
 			<div
 				ref={wrapper}
-				className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full sm:w-10/12 md:w-8/12 lg:w-1/2'
+				className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 w-full sm:w-10/12 md:w-5/12 p-4'
 			>
 				{children}
 			</div>

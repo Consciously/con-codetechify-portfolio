@@ -1,7 +1,6 @@
 import '../globals.css';
 import { Roboto_Mono, Fira_Mono } from 'next/font/google';
 import { FilterProvider } from './context/FilterContext';
-import { ProjectProvider } from './context/ProjectContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ReactNode } from 'react';
@@ -22,20 +21,18 @@ export const metadata = {
 
 interface IProps {
 	children: ReactNode;
-	modal: ReactNode;
+	projectModal: ReactNode;
 }
 
-export default function RootLayout({ children, modal }: IProps) {
+export default function RootLayout({ children, projectModal }: IProps) {
 	return (
 		<html lang='en'>
 			<body className={`text-white bg-slate-700 ${robotoMono.className}`}>
 				<FilterProvider>
-					<ProjectProvider>
-						<Header />
-						<main>{children}</main>
-						{modal}
-						<Footer />
-					</ProjectProvider>
+					<Header />
+					<main>{children}</main>
+					{projectModal}
+					<Footer />
 				</FilterProvider>
 			</body>
 		</html>
